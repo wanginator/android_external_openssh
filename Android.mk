@@ -3,6 +3,8 @@ LOCAL_PATH:= $(call my-dir)
 ###################### libssh ######################
 include $(CLEAR_VARS)
 
+LOCAL_CFLAGS += -fno-strict-aliasing
+
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_SRC_FILES := \
@@ -39,7 +41,8 @@ LOCAL_SHARED_LIBRARIES += libssl libcrypto libdl libz
 
 LOCAL_MODULE := libssh
 
-LOCAL_CFLAGS+=-O3
+LOCAL_CFLAGS += -O3 -fno-strict-aliasing
+LOCAL_CFLAGS += -fno-strict-aliasing
 
 include $(BUILD_SHARED_LIBRARY)
 
@@ -48,6 +51,8 @@ include $(BUILD_SHARED_LIBRARY)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE_TAGS := optional
+
+LOCAL_CFLAGS += -fno-strict-aliasing
 
 LOCAL_SRC_FILES := \
     ssh.c readconf.c clientloop.c sshtty.c \
@@ -168,3 +173,5 @@ LOCAL_MODULE := start-ssh
 LOCAL_MODULE_CLASS := EXECUTABLES
 LOCAL_SRC_FILES := start-ssh
 include $(BUILD_PREBUILT)
+
+LOCAL_CFLAGS += -fno-strict-aliasing
